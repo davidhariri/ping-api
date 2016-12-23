@@ -7,7 +7,7 @@ from routes.pings import Pings
 from mongoengine import connect
 
 # Connect to MongoDB
-connect("ping", os.environ.get("MONGODB_URI"))
+connect("ping", host=os.environ.get("MONGODB_URI"))
 
 app = Flask(__name__)
 api = Api(app)
