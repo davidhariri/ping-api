@@ -5,14 +5,15 @@ class Ping(Document):
 	lat = FloatField(required=True)
 	lon = FloatField(required=True)
 	time = DateTimeField(required=True, default=datetime.datetime.now)
-	alt = FloatField()
-	speed = FloatField()
+	alt = FloatField(required=True)
+	speed = FloatField(required=True)
 
 	def to_jdict(self):
 		return {
 			"id" : str(self.id),
+			"time" : str(self.time),
 			"lat" : self.lat,
 			"lon" : self.lon,
-			"time" : str(self.time),
+			"alt" : self.alt,
 			"speed" : self.speed
 		}
