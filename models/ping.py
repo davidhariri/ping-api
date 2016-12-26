@@ -5,8 +5,7 @@ from mongoengine import *
 connect("ping", host=os.environ.get("MONGODB_URI"))
 
 class Ping(Document):
-	lat = FloatField(required=True)
-	lon = FloatField(required=True)
+	point = PointField(required=True)
 	time = DateTimeField(required=True, default=datetime.datetime.now)
 	alt = FloatField(required=True)
 	speed = FloatField(required=True)
@@ -15,8 +14,7 @@ class Ping(Document):
 		return {
 			"id" : str(self.id),
 			"time" : str(self.time),
-			"lat" : self.lat,
-			"lon" : self.lon,
+			"point" : self.point,
 			"alt" : self.alt,
 			"speed" : self.speed
 		}
