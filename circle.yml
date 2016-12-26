@@ -2,13 +2,14 @@ machine:
 	environment:
 		FLASK_DEBUG: False
 		MONGODB_URI: mongodb://127.0.0.1:27017
+
 	python:
-    	version: 3.5.2
+		version: 3.5.2
 
 dependencies:
-  pre:
-    - "pip3 install -r requirements.txt"
+	pre:
+		- "pip3 install -r requirements.txt"
 
 test:
-  override:
-    - "python3 -m unittest"
+	override:
+		- "python3 -m unittest"
