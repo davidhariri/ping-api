@@ -1,12 +1,8 @@
 import os
 from flask import Flask
 from flask_restful import Api
-from mongoengine import connect
 
 from routes.pings import Pings
-
-# Connect to MongoDB
-connect("ping", host=os.environ.get("MONGODB_URI"))
 
 app = Flask(__name__)
 api = Api(app)

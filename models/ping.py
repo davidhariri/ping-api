@@ -1,5 +1,8 @@
+import datetime, os
 from mongoengine import *
-import datetime
+
+# Connect to MongoDB
+connect("ping", host=os.environ.get("MONGODB_URI"))
 
 class Ping(Document):
 	lat = FloatField(required=True)
