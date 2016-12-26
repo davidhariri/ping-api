@@ -12,7 +12,7 @@ class Pings(Resource):
 			parser.add_argument(
 				f,
 				type=float,
-				help="'{}' should be parsable to a float".format(f),
+				help="'{}' should be parsable to as a float".format(f),
 				required=True
 			)
 
