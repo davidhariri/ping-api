@@ -8,6 +8,7 @@ class Ping(Document):
 	time = DateTimeField(required=True, default=datetime.datetime.now)
 	alt = FloatField(required=True)
 	speed = FloatField(required=True)
+	comment = StringField(max_length=500, default="")
 
 	def to_jdict(self):
 		return {
@@ -17,6 +18,7 @@ class Ping(Document):
 				"lat" : self.point["coordinates"][0],
 				"lon" : self.point["coordinates"][1]
 			},
+			"comment" : self.comment,
 			"alt" : self.alt,
 			"speed" : self.speed
 		}
