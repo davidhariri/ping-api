@@ -1,9 +1,10 @@
 machine:
 	environment:
-		FLASK_DEBUG=False
-		MONGODB_URI=mongodb://127.0.0.1:27017
+		FLASK_DEBUG: False
+		MONGODB_URI: mongodb://127.0.0.1:27017
 	python:
     	version: 3.5.2
+    	
 test:
   override:
     - python3 -m unittest
