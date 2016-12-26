@@ -24,6 +24,8 @@ class Pings(Resource):
 			required=True
 		)
 
+		parser.add_argument("comment", type=str, help="'comment' should be a string")
+
 		args = parser.parse_args()
 
 		new_ping = Ping(**args)
