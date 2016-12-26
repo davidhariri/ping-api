@@ -1,7 +1,7 @@
 machine:
 	environment:
 		FLASK_DEBUG: False
-		MONGODB_URI: mongodb://127.0.0.1:27017
+		MONGODB_URI: "mongodb://127.0.0.1:27017"
 
 	python:
 		version: 3.5.2
