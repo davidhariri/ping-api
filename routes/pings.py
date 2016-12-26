@@ -6,7 +6,7 @@ import datetime
 class Pings(Resource):
 	def post(self):
 		parser = reqparse.RequestParser()
-		req_floats = ["lon", "lat", "speed", "alt"]
+		req_floats = ["speed", "alt"]
 
 		for f in req_floats:
 			parser.add_argument(
@@ -15,6 +15,13 @@ class Pings(Resource):
 				help="'{}' should be parsable to float".format(f),
 				required=True
 			)
+
+		parser.add_argument(
+			"point",
+			type=list,
+			help="'{}' should be a list of floats".format(f),
+			required=True
+		)
 
 		args = parser.parse_args()
 
