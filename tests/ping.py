@@ -12,10 +12,13 @@ class TestPingModel(unittest.TestCase):
 
     def test_jdict(self):
         """Tests that to_jdict method returns right values for BSON types"""
-        jdict = self.ping.to_jdict()
+        # Find the newly made ping
+        new_ping = Ping.objects.order_by("-_id")[0]
+        jdict = new_ping.to_jdict()
+        
         self.assertTrue(isinstance(jdict["id"], str))
         self.assertTrue(isinstance(jdict["time"], str))
-        self.assertTrue(isinstance(jdict["point"], list))
+        self.assertTrue(isinstance(jdict["point"], dict))
 
     def tearDown(self):
         self.ping.delete()

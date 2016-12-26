@@ -18,8 +18,9 @@ class Pings(Resource):
 
 		parser.add_argument(
 			"point",
-			type=list,
-			help="'{}' should be a list of floats".format(f),
+			type=float,
+			help="'point' should be a lat, lon list of floats",
+			action="append",
 			required=True
 		)
 
@@ -28,11 +29,17 @@ class Pings(Resource):
 		new_ping = Ping(**args)
 		new_ping.save()
 
-		return new_ping.to_jdict(), 201
+		return {"id" : str(new_ping.id)}, 201
 
 	def get(self):
 		parser = reqparse.RequestParser()
-		parser.add_argument("size", type=int, help="'size' should be an integer greater than 0", location="args")
+		parser.add_argument(
+		    "size",
+		    type=int,
+		    help="'size' should be an integer greater than 0",
+		    location="args"
+		)
+
 		args = parser.parse_args()
 
 		size = args["size"] or 10

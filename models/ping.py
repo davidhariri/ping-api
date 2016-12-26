@@ -1,7 +1,6 @@
 import datetime, os
 from mongoengine import *
 
-# Connect to MongoDB
 connect("ping", host=os.environ.get("MONGODB_URI"))
 
 class Ping(Document):
@@ -14,7 +13,10 @@ class Ping(Document):
 		return {
 			"id" : str(self.id),
 			"time" : str(self.time),
-			"point" : self.point,
+			"point" : {
+				"lat" : self.point["coordinates"][0],
+				"lon" : self.point["coordinates"][1]
+			},
 			"alt" : self.alt,
 			"speed" : self.speed
 		}
